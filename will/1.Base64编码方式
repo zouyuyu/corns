@@ -1,0 +1,9 @@
+1.原理：将二进制通过码表转成对应字符（ 将每个字节转成二进制形式，每6位取值，将得到的值作为索引，到码值表中索引到对应的可见字符，这样三字节匹配四个字符）
+
+2.注意，并不能保证每个数组个数都是3的倍数，以此对于未能补成二进制位的后面补0
+
+3.ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/
+
+4.实列
+  -》 System.out.println(new String(Base64.encodeBase64("谢国宏".getBytes())));
+  -》 6LCi5Zu95a6P
