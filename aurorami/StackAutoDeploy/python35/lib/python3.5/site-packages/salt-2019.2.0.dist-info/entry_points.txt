@@ -1,0 +1,15 @@
+[console_scripts]
+salt = salt.scripts:salt_main
+salt-api = salt.scripts:salt_api
+salt-call = salt.scripts:salt_call
+salt-cloud = salt.scripts:salt_cloud
+salt-cp = salt.scripts:salt_cp
+salt-key = salt.scripts:salt_key
+salt-master = salt.scripts:salt_master
+salt-minion = salt.scripts:salt_minion
+salt-run = salt.scripts:salt_run
+salt-ssh = salt.scripts:salt_ssh
+salt-syndic = salt.scripts:salt_syndic
+salt-unity = salt.scripts:salt_unity
+spm = salt.scripts:salt_spm
+
