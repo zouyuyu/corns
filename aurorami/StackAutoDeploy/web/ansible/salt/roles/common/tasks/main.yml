@@ -1,0 +1,19 @@
+---
+# 安装libselinux-python，如果目标机打开了selinux，需要安装这个包才可以执行写的操作
+- name: ensure libselinux-python
+  yum: name=libselinux-python state=latest
+  tags: #tags打上一个标签，这样当ansible-playbook执行脚本的时候，如果不加--tags 参数，将会执行所有tasks，如加上--tags 某个tags名，则只会执行打上对应tags的tasks
+    - comment_appuser_sudo
+    - add_appuser_sudo
+
+# 注释appuser sudo
+- name: Commented-Out appuser sudo
+  lineinfile: dest=/etc/sudoers state=absent regexp="^(appuser.*)$"  validate="visudo -cf %s" #sudoers中删除以appuser开头的用户，其实更科学应该设置一个vars，把appuser作为一个变量这样更灵活
+  tags:
+    - comment_appuser_sudo
+
+# 添加appuser sudo
+- name: Add appuser sudo
+  lineinfile: dest=/etc/sudoers insertafter="^sre" line="appuser  ALL=(ALL)       NOPASSWD:ALL" validate="visudo -cf %s" #在sre开头那行后边加入line的信息
+  tags:
+    - add_appuser_sudo

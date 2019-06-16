@@ -1,0 +1,17 @@
+---
+- hosts: centos #可以选择多个分组，这个要和hosts中能找到
+  #淘汰 sudo: yes
+  #become_user ：设置为具有所需权限的用户 - 您成为的用户，而不是您登录的用户。并不意味着，允许将其设置为主机级别。必须跟become: yes 一起使用。
+  remote_user: aurorami
+  become_user: root
+  vars:
+    docker_users:
+      - aurorami
+    os:
+      - RedHat
+  roles:
+    - role: docker #将hosts和common这个角色绑定，这个common需要在roles目录中存在
+      become: yes
+
+#ansible-playbook -u aurorami site.yml
+#ansible-playbook -i hosts site.yml --tags comment_appuser_sudo -f 4

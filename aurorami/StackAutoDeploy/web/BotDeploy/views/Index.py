@@ -4,7 +4,7 @@ from django.template import loader
 
 def index(request):
 
-    return render(request, 'html/index.html')
+    return render(request, 'index.html')
 
     #latest_question_list = Question.objects.order_by('-pub_date')[:5]
     # template = loader.get_template('static/html/index.html')

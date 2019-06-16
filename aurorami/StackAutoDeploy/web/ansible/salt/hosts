@@ -1,0 +1,11 @@
+[salt-master]
+10.199.72.34
+
+[salt-minior]
+10.0.32.34
+
+
+[salt:children] #通过这种方式，将lf和bj这2个组的主机都归类为ctx-web中，这样后续site.yml的host绑定ctx-web就可以操作以下两个分组
+salt-master
+salt-minior
+

@@ -1,0 +1,8 @@
+---
+- hosts: [salt] #可以选择多个分组，这个要和hosts中能找到
+  remote_user: aurorami #因为需要通过远端普通用户使用sudo的方式，所以还需要配置sudo
+  sudo: yes
+  roles:
+  - common #将hosts和common这个角色绑定，这个common需要在roles目录中存在
+
+# ansible-playbook -i hosts site.yml --tags comment_appuser_sudo -f 4 #-f并行处理的个数，默认5个，-i指定hosts文件，后接入口yml文件，注意tags，这里选择了comment...将会执行ensure libselinux-python 和Commented-Out appuser sudo这2个tasks，如不接tags参数，则所有tasks都执行
